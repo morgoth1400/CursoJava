@@ -1,3 +1,7 @@
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,9 +29,29 @@ class Marco extends JFrame{
 }
 
 
-class Lamina extends JPanel{
-	JButton boton = new JButton("Azul");
+class Lamina extends JPanel implements ActionListener{
+	JButton botonAzul = new JButton("Azul");
+	JButton botonVerde = new JButton("Verde");
+	JButton botonRojo = new JButton("Rojo");
 	public Lamina() {
-		add(boton);
+		add(botonAzul);
+		add(botonRojo);
+		add(botonVerde);
+		botonAzul.addActionListener(this);
+		botonRojo.addActionListener(this);
+		botonVerde.addActionListener(this);
+
+	}
+	public void actionPerformed(ActionEvent e){
+		Object botonPulsado=e.getSource();
+		if(e.getSource()==botonAzul){
+			setBackground(Color.blue);
+		}else if(botonPulsado==botonRojo) {
+			setBackground(Color.red);
+		}else {
+			setBackground(Color.green);
+		}
+		
+		
 	}
 }
